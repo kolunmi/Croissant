@@ -23,7 +23,26 @@ from gi.repository import Gtk
 class CroissantWindow(Gtk.ApplicationWindow):
     __gtype_name__ = 'CroissantWindow'
 
-    label = Gtk.Template.Child()
+    dock = Gtk.Template.Child()
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+        pages = [
+            'cr-home',
+            'cr-library',
+            'cr-media',
+            'cr-news',
+            'cr-notes',
+            'cr-profile',
+            'cr-settings',
+        ]
+        for page in pages:
+            img = Gtk.Image.new()
+            img.set_from_icon_name(page)
+            img.set_pixel_size(32)
+
+            btn = Gtk.Button.new()
+            btn.set_child(img)
+
+            self.dock.append(btn)

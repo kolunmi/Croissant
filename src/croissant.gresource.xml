@@ -3,5 +3,13 @@
   <gresource prefix="/org/croissantproject/Croissant">
     <file preprocess="xml-stripblanks">window.ui</file>
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
+
+    <file>icons/cr-home.png</file>
+    <file>icons/cr-library.png</file>
+    <file>icons/cr-media.png</file>
+    <file>icons/cr-news.png</file>
+    <file>icons/cr-notes.png</file>
+    <file>icons/cr-profile.png</file>
+    <file>icons/cr-settings.png</file>
   </gresource>
 </gresources>

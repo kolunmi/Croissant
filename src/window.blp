@@ -16,19 +16,28 @@ template $CroissantWindow: ApplicationWindow {
   };
 
   child: Box {
-    halign: center;
-    orientation: horizontal;
-    spacing: 15;
-
-    Label label {
-      label: _("Hello, World!");
-
-      styles [
-        "title-1",
-      ]
+    Box dock {
+      valign: center;
+      orientation: vertical;
+      spacing: 15;
+      homogeneous: true;
     }
 
-    $PastryGridSpinner {}
+    Box {
+      halign: center;
+      orientation: horizontal;
+      spacing: 15;
+
+      Label {
+        label: _("Hello, World!");
+
+        styles [
+          "title-1",
+        ]
+      }
+
+      $PastryGridSpinner {}
+    }
   };
 }
 
