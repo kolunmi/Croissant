@@ -1,4 +1,4 @@
-application_id = 'org.croissant.Croissant'
+application_id = 'org.croissantproject.Croissant'
 
 scalable_dir = 'hicolor' / 'scalable' / 'apps'
 install_data(

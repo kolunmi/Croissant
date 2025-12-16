@@ -1,5 +1,5 @@
 {
-    "id" : "org.croissant.Croissant",
+    "id" : "org.croissantproject.Croissant",
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "master",
     "sdk" : "org.gnome.Sdk",

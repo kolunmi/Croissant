@@ -19,7 +19,7 @@
 
 from gi.repository import Gtk
 
-@Gtk.Template(resource_path='/org/croissant/Croissant/window.ui')
+@Gtk.Template(resource_path='/org/croissantproject/Croissant/window.ui')
 class CroissantWindow(Gtk.ApplicationWindow):
     __gtype_name__ = 'CroissantWindow'
 

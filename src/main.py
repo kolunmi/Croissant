@@ -31,9 +31,9 @@ class CroissantApplication(Gtk.Application):
     """The main application singleton class."""
 
     def __init__(self):
-        super().__init__(application_id='org.croissant.Croissant',
+        super().__init__(application_id='org.croissantproject.Croissant',
                          flags=Gio.ApplicationFlags.DEFAULT_FLAGS,
-                         resource_base_path='/org/croissant/Croissant')
+                         resource_base_path='/org/croissantproject/Croissant')
         self.create_action('quit', lambda *_: self.quit(), ['<control>q'])
         self.create_action('about', self.on_about_action)
         self.create_action('preferences', self.on_preferences_action)
@@ -54,7 +54,7 @@ class CroissantApplication(Gtk.Application):
         about = Gtk.AboutDialog(transient_for=self.props.active_window,
                                 modal=True,
                                 program_name='croissant',
-                                logo_icon_name='org.croissant.Croissant',
+                                logo_icon_name='org.croissantproject.Croissant',
                                 version='0.1.0',
                                 authors=['Eva'],
                                 copyright='© 2025 Eva')
