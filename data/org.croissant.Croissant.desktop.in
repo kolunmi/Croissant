@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=croissant
+Exec=croissant
+Icon=org.croissant.Croissant
+Terminal=false
+Type=Application
+Categories=Utility;
+Keywords=GTK;
+StartupNotify=true
+DBusActivatable=true

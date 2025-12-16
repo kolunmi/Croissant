@@ -1,0 +1,8 @@
+[wrap-git]
+directory = libpastry
+url = https://github.com/kolunmi/libpastry.git
+revision = main
+depth = 1
+
+[provide]
+libpastry-0.1 = libpastry_dep

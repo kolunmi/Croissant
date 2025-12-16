@@ -1,0 +1,8 @@
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
+data/org.croissant.Croissant.desktop.in
+data/org.croissant.Croissant.metainfo.xml.in
+data/org.croissant.Croissant.gschema.xml
+src/main.py
+src/window.py
+src/window.blp

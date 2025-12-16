@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=org.croissant.Croissant
+Exec=@bindir@/croissant --gapplication-service

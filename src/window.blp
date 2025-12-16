@@ -1,0 +1,52 @@
+using Gtk 4.0;
+
+template $CroissantWindow: ApplicationWindow {
+  title: _("Croissant");
+  default-width: 800;
+  default-height: 600;
+
+  titlebar: HeaderBar {
+    [end]
+    MenuButton {
+      primary: true;
+      icon-name: "open-menu-symbolic";
+      tooltip-text: _("Main Menu");
+      menu-model: primary_menu;
+    }
+  };
+
+  child: Box {
+    halign: center;
+    orientation: horizontal;
+    spacing: 15;
+
+    Label label {
+      label: _("Hello, World!");
+
+      styles [
+        "title-1",
+      ]
+    }
+
+    $PastryGridSpinner {}
+  };
+}
+
+menu primary_menu {
+  section {
+    item {
+      label: _("_Preferences");
+      action: "app.preferences";
+    }
+
+    item {
+      label: _("_Keyboard Shortcuts");
+      action: "win.show-help-overlay";
+    }
+
+    item {
+      label: _("_About Croissant");
+      action: "app.about";
+    }
+  }
+}
