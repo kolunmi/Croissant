@@ -1,0 +1,11 @@
+.main-bg {
+    background: linear-gradient(to bottom, #ff9a3a 0%, #ffd668 100%);
+    padding: 20px;
+}
+
+.game-poster {
+    border-width: 0;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px 2px alpha(black, 0.5);
+    background-image: image(transparent);
+}

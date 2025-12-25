@@ -23,7 +23,7 @@ import gi
 gi.require_version('Gtk', '4.0')
 gi.require_version('Pastry', '0.1')
 
-from gi.repository import Gtk, Gio, Pastry
+from gi.repository import Gtk, Gdk, Gio, Pastry
 from .window import CroissantWindow
 
 
@@ -34,9 +34,19 @@ class CroissantApplication(Gtk.Application):
         super().__init__(application_id='org.croissantproject.Croissant',
                          flags=Gio.ApplicationFlags.DEFAULT_FLAGS,
                          resource_base_path='/org/croissantproject/Croissant')
+
         self.create_action('quit', lambda *_: self.quit(), ['<control>q'])
         self.create_action('about', self.on_about_action)
         self.create_action('preferences', self.on_preferences_action)
+
+        css_provider = Gtk.CssProvider.new()
+        css_provider.load_from_resource('/org/croissantproject/Croissant/style.css')
+
+        Gtk.StyleContext.add_provider_for_display(
+            Gdk.Display.get_default(),
+            css_provider,
+            600,
+        )
 
     def do_activate(self):
         """Called when the application is activated.

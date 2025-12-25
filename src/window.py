@@ -17,13 +17,17 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
+from pathlib import Path
+
 from gi.repository import Gtk
+
 
 @Gtk.Template(resource_path='/org/croissantproject/Croissant/window.ui')
 class CroissantWindow(Gtk.ApplicationWindow):
     __gtype_name__ = 'CroissantWindow'
 
     dock = Gtk.Template.Child()
+    grid = Gtk.Template.Child()
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -40,9 +44,27 @@ class CroissantWindow(Gtk.ApplicationWindow):
         for page in pages:
             img = Gtk.Image.new()
             img.set_from_icon_name(page)
-            img.set_pixel_size(32)
+            img.set_pixel_size(64)
 
             btn = Gtk.Button.new()
+            btn.add_css_class('pastry-overlay-button')
             btn.set_child(img)
 
             self.dock.append(btn)
+
+        posters = []
+        poster_dir = Path('/var/home/eva/gameposters/')
+        for fpath in poster_dir.rglob('*.png'):
+            if fpath.is_file():
+                posters.append(str(fpath.absolute()))
+
+        def add_poster(path, x, y, w, h):
+            pic = Gtk.Picture.new_for_filename(path)
+            pic.add_css_class('game-poster')
+            pic.set_focusable(True)
+            pic.set_content_fit(Gtk.ContentFit.CONTAIN)
+
+            self.grid.attach(pic, x, y, w, h)
+
+        for i, poster in enumerate(posters):
+            add_poster(poster, i % 6, i // 6 , 1, 1)

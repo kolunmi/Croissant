@@ -15,29 +15,30 @@ template $CroissantWindow: ApplicationWindow {
     }
   };
 
-  child: Box {
-    Box dock {
-      valign: center;
-      orientation: vertical;
-      spacing: 15;
-      homogeneous: true;
-    }
+  child: $PastryFocusOverlay {
+    child: Box {
+      margin-start: 10;
+      margin-end: 10;
+      margin-top: 10;
+      margin-bottom: 10;
 
-    Box {
-      halign: center;
       orientation: horizontal;
       spacing: 15;
 
-      Label {
-        label: _("Hello, World!");
-
-        styles [
-          "title-1",
-        ]
+      Box dock {
+        valign: center;
+        orientation: vertical;
+        spacing: 15;
+        homogeneous: true;
       }
 
-      $PastryGridSpinner {}
-    }
+      Grid grid {
+        hexpand: true;
+        halign: center;
+        row-spacing: 15;
+        column-spacing: 15;
+      }
+    };
   };
 }
 
