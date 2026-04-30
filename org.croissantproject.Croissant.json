@@ -1,38 +1,59 @@
 {
-    "id" : "org.croissantproject.Croissant",
-    "runtime" : "org.gnome.Platform",
-    "runtime-version" : "master",
-    "sdk" : "org.gnome.Sdk",
-    "command" : "croissant",
-    "finish-args" : [
-        "--share=network",
-        "--share=ipc",
-        "--socket=fallback-x11",
-        "--device=dri",
-        "--socket=wayland"
-    ],
-    "cleanup" : [
-        "/include",
-        "/lib/pkgconfig",
-        "/man",
-        "/share/doc",
-        "/share/gtk-doc",
-        "/share/man",
-        "/share/pkgconfig",
-        "*.la",
-        "*.a"
-    ],
-    "modules" : [
+  "id" : "org.croissantproject.Croissant",
+  "runtime" : "org.gnome.Platform",
+  "runtime-version" : "50",
+  "sdk" : "org.gnome.Sdk",
+  "command" : "croissant",
+  "finish-args" : [
+    "--share=network",
+    "--share=ipc",
+    "--socket=fallback-x11",
+    "--device=dri",
+    "--socket=wayland",
+
+    "--filesystem=home"
+  ],
+  "cleanup" : [
+    "/include",
+    "/lib/pkgconfig",
+    "/man",
+    "/share/doc",
+    "/share/gtk-doc",
+    "/share/man",
+    "/share/pkgconfig",
+    "*.la",
+    "*.a"
+  ],
+  "modules" : [
+    {
+      "name": "md4c",
+      "buildsystem": "cmake",
+      "config-opts": [
+        "-DBUILD_MD2HTML_EXECUTABLE=Off"
+      ],
+      "sources": [
         {
-            "name" : "croissant",
-            "builddir" : true,
-            "buildsystem" : "meson",
-            "sources" : [
-                {
-                    "type" : "git",
-                    "url" : "file:///var/home/eva/Projects"
-                }
-            ]
+          "type": "git",
+          "url": "https://github.com/mity/md4c.git",
+          "commit": "729e6b8b320caa96328968ab27d7db2235e4fb47",
+          "tag": "release-0.5.2",
+          "x-checker-data": {
+            "type": "git",
+            "tag-pattern": "^release-([\\d.]+)$"
+          }
         }
-    ]
+      ]
+    },
+    {
+      "name" : "croissant",
+      "builddir" : true,
+      "buildsystem" : "meson",
+      "sources" : [
+        {
+          "type" : "git",
+          "path" : "."
+        }
+      ]
+    }
+  ]
 }
