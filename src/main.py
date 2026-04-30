@@ -25,6 +25,7 @@ gi.require_version('Pastry', '0.1')
 
 from gi.repository import Gtk, Gdk, Gio, Pastry
 from .window import CroissantWindow
+from .globals import CrGlobals, CrGame
 
 
 class CroissantApplication(Gtk.Application):
@@ -48,6 +49,21 @@ class CroissantApplication(Gtk.Application):
             600,
         )
 
+        self.globals = CrGlobals()
+
+        self.globals.games = Gio.ListStore()
+        self.globals.games.append(CrGame(name="antonblast", coverart="/home/kol/Pictures/croissant/game icons/antonblast.png"))
+        self.globals.games.append(CrGame(name="hollowknight", coverart="/home/kol/Pictures/croissant/game icons/hollowknight.png"))
+        self.globals.games.append(CrGame(name="nmf", coverart="/home/kol/Pictures/croissant/game icons/nmf.jpg"))
+        self.globals.games.append(CrGame(name="pizzatower", coverart="/home/kol/Pictures/croissant/game icons/pizzatower.jpg"))
+        self.globals.games.append(CrGame(name="ufo 50", coverart="/home/kol/Pictures/croissant/game icons/ufo 50.jpg"))
+        self.globals.games.append(CrGame(name="VotV", coverart="/home/kol/Pictures/croissant/game icons/VotV.png"))
+        self.globals.games.append(CrGame(name="balatro", coverart="/home/kol/Pictures/croissant/game icons/balatro.png"))
+        self.globals.games.append(CrGame(name="hypnospace", coverart="/home/kol/Pictures/croissant/game icons/hypnospace.jpg"))
+        self.globals.games.append(CrGame(name="oneshot", coverart="/home/kol/Pictures/croissant/game icons/oneshot.jpg"))
+        self.globals.games.append(CrGame(name="SLARPG", coverart="/home/kol/Pictures/croissant/game icons/SLARPG.png"))
+        self.globals.games.append(CrGame(name="uncannycatgolf", coverart="/home/kol/Pictures/croissant/game icons/uncannycatgolf.png"))
+
     def do_activate(self):
         """Called when the application is activated.
 
@@ -56,7 +72,7 @@ class CroissantApplication(Gtk.Application):
         """
         win = self.props.active_window
         if not win:
-            win = CroissantWindow(application=self)
+            win = CroissantWindow(application=self, globals=self.globals)
         win.present()
 
     def on_about_action(self, *args):

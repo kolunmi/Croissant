@@ -1,6 +1,6 @@
-# window.py
+# globals.py
 #
-# Copyright 2025 Eva
+# Copyright 2026 Eva M
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,17 +17,20 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-from pathlib import Path
+from gi.repository import GObject, Gio, Gtk
 
-from gi.repository import GObject, Gtk
+class CrGame(GObject.Object):
+    __gtype_name__ = 'CrGame'
 
-from .globals import CrGlobals, CrGame
+    name = GObject.Property(type=str, default="", flags=GObject.ParamFlags.READWRITE)
+    description = GObject.Property(type=str, default="", flags=GObject.ParamFlags.READWRITE)
+    coverart = GObject.Property(type=str, default="", flags=GObject.ParamFlags.READWRITE)
 
-@Gtk.Template(resource_path='/org/croissantproject/Croissant/window.ui')
-class CroissantWindow(Gtk.ApplicationWindow):
-    __gtype_name__ = 'CroissantWindow'
+class CrGlobals(GObject.Object):
+    __gtype_name__ = 'CrGlobals'
 
-    globals = GObject.Property(type=CrGlobals, default=None, flags=GObject.ParamFlags.READWRITE)
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+    games = GObject.Property(
+        type=Gio.ListModel,
+        default="",
+        flags=GObject.ParamFlags.READWRITE
+    )

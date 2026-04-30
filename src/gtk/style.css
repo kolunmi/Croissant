@@ -3,9 +3,11 @@
     padding: 20px;
 }
 
+.games-grid {
+    background-color: #ebebeb;
+}
+
 .game-poster {
-    border-width: 0;
     border-radius: 20px;
-    box-shadow: 2px 2px 2px 2px alpha(black, 0.5);
-    background-image: image(transparent);
+    padding: 0;
 }

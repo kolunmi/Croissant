@@ -46,6 +46,7 @@ configure_file(
 croissant_sources = [
   '__init__.py',
   'main.py',
+  'globals.py',
   'window.py',
 ]
 
