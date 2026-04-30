@@ -20,7 +20,94 @@ template $CrWindow: ApplicationWindow {
       child: $PastryAnnotationOverlay {
         child: Box {
           orientation: horizontal;
-          spacing: 15;
+
+          $PastryGlassFrame {
+            margin-start: 15;
+            margin-end: 15;
+            margin-top: 15;
+            margin-bottom: 15;
+            halign: center;
+
+            child: Box {
+              margin-start: 10;
+              margin-end: 10;
+              margin-top: 10;
+              margin-bottom: 10;
+
+              orientation: vertical;
+              spacing: 5;
+
+              Button {
+                styles [
+                  "flat",
+                ]
+                child: Image {
+                  icon-name: 'cr-home';
+                  pixel-size: 64;
+                };
+              }
+
+              Button {
+                styles [
+                  "flat",
+                ]
+                child: Image {
+                  icon-name: 'cr-library';
+                  pixel-size: 64;
+                };
+              }
+
+              Button {
+                styles [
+                  "flat",
+                ]
+                child: Image {
+                  icon-name: 'cr-media';
+                  pixel-size: 64;
+                };
+              }
+
+              Button {
+                styles [
+                  "flat",
+                ]
+                child: Image {
+                  icon-name: 'cr-news';
+                  pixel-size: 64;
+                };
+              }
+
+              Button {
+                styles [
+                  "flat",
+                ]
+                child: Image {
+                  icon-name: 'cr-notes';
+                  pixel-size: 64;
+                };
+              }
+
+              Button {
+                styles [
+                  "flat",
+                ]
+                child: Image {
+                  icon-name: 'cr-profile';
+                  pixel-size: 64;
+                };
+              }
+
+              Button {
+                styles [
+                  "flat",
+                ]
+                child: Image {
+                  icon-name: 'cr-settings';
+                  pixel-size: 64;
+                };
+              }
+            };
+          }
 
           ScrolledWindow {
             hexpand: true;
