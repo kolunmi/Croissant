@@ -16,6 +16,10 @@ template $CrWindow: ApplicationWindow {
   };
 
   child: $PastryFocusOverlay {
+    styles [
+      "main-bg",
+    ]
+
     child: $PastryGlassRoot {
       child: $PastryAnnotationOverlay {
         child: Box {
@@ -61,7 +65,9 @@ template $CrWindow: ApplicationWindow {
               margin-end: 15;
               margin-top: 15;
               margin-bottom: 15;
+
               halign: center;
+              valign: center;
 
               child: Box {
                 margin-start: 10;
@@ -144,47 +150,53 @@ template $CrWindow: ApplicationWindow {
               };
             }
 
-            ScrolledWindow {
+            $PastryGlassFrame {
               hexpand: true;
               halign: center;
 
-              margin-start: 10;
-              margin-end: 10;
-              margin-top: 10;
-              margin-bottom: 10;
+              child: ScrolledWindow {
+                margin-start: 10;
+                margin-end: 10;
+                margin-top: 10;
+                margin-bottom: 10;
 
-              hscrollbar-policy: never;
-              vscrollbar-policy: always;
-              propagate-natural-width: true;
-              propagate-natural-height: true;
+                hscrollbar-policy: never;
+                vscrollbar-policy: always;
+                propagate-natural-width: true;
+                propagate-natural-height: true;
 
-              child: GridView {
-                model: NoSelection {
-                  model: bind template.globals as <$CrGlobals>.games;
-                };
-                factory: BuilderListItemFactory {
-                  template ListItem {
-                    selectable: false;
-                    activatable: false;
-                    focusable: false;
+                child: GridView {
+                  styles [
+                    "games-grid",
+                  ]
 
-                    child: Button btn {
-                      styles [
-                        "game-poster",
-                      ]
-                      overflow: hidden;
-                      halign: center;
-                      valign: center;
+                  model: NoSelection {
+                    model: bind template.globals as <$CrGlobals>.games;
+                  };
+                  factory: BuilderListItemFactory {
+                    template ListItem {
+                      selectable: false;
+                      activatable: false;
+                      focusable: false;
 
-                      has-tooltip: true;
-                      tooltip-text: bind template.item as <$CrGame>.name;
+                      child: Button btn {
+                        styles [
+                          "game-poster",
+                        ]
+                        overflow: hidden;
+                        halign: center;
+                        valign: center;
 
-                      child: Image {
-                        file: bind template.item as <$CrGame>.coverart;
-                        pixel-size: 128;
+                        has-tooltip: true;
+                        tooltip-text: bind template.item as <$CrGame>.name;
+
+                        child: Image {
+                          file: bind template.item as <$CrGame>.coverart;
+                          pixel-size: 128;
+                        };
                       };
-                    };
-                  }
+                    }
+                  };
                 };
               };
             }

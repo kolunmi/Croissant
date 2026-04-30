@@ -1,10 +1,11 @@
 .main-bg {
     background: linear-gradient(to bottom, #ff9a3a 0%, #ffd668 100%);
+    color: #222222;
     padding: 20px;
 }
 
 .games-grid {
-    background-color: #ebebeb;
+    background-color: transparent;
 }
 
 .game-poster {
