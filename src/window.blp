@@ -1,6 +1,6 @@
 using Gtk 4.0;
 
-template $CroissantWindow: ApplicationWindow {
+template $CrWindow: ApplicationWindow {
   title: _("Croissant");
   default-width: 800;
   default-height: 600;
@@ -16,50 +16,58 @@ template $CroissantWindow: ApplicationWindow {
   };
 
   child: $PastryFocusOverlay {
-    child: Box {
-      orientation: horizontal;
-      spacing: 15;
+    child: $PastryGlassRoot {
+      child: $PastryAnnotationOverlay {
+        child: Box {
+          orientation: horizontal;
+          spacing: 15;
 
-      ScrolledWindow {
-        hexpand: true;
-        margin-start: 10;
-        margin-end: 10;
-        margin-top: 10;
-        margin-bottom: 10;
+          ScrolledWindow {
+            hexpand: true;
+            halign: center;
 
-        hscrollbar-policy: never;
-        vscrollbar-policy: always;
-        propagate-natural-width: true;
-        propagate-natural-height: true;
+            margin-start: 10;
+            margin-end: 10;
+            margin-top: 10;
+            margin-bottom: 10;
 
-        child: GridView {
-          styles [
-            "games-grid",
-          ]
+            hscrollbar-policy: never;
+            vscrollbar-policy: always;
+            propagate-natural-width: true;
+            propagate-natural-height: true;
 
-          model: SingleSelection {
-            model: bind template.globals as <$CrGlobals>.games;
-          };
-          factory: BuilderListItemFactory {
-            template ListItem {
-              selectable: false;
-              activatable: false;
-              focusable: false;
-
-              child: Button {
-                styles [
-                  "game-poster",
-                ]
-                overflow: hidden;
-                child: Image {
-                  file: bind template.item as <$CrGame>.coverart;
-                  pixel-size: 128;
-                };
+            child: GridView {
+              model: NoSelection {
+                model: bind template.globals as <$CrGlobals>.games;
               };
-            }
-          };
+              factory: BuilderListItemFactory {
+                template ListItem {
+                  selectable: false;
+                  activatable: false;
+                  focusable: false;
+
+                  child: Button btn {
+                    styles [
+                      "game-poster",
+                    ]
+                    overflow: hidden;
+                    halign: center;
+                    valign: center;
+
+                    has-tooltip: true;
+                    tooltip-text: bind template.item as <$CrGame>.name;
+
+                    child: Image {
+                      file: bind template.item as <$CrGame>.coverart;
+                      pixel-size: 128;
+                    };
+                  };
+                }
+              };
+            };
+          }
         };
-      }
+      };
     };
   };
 }

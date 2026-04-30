@@ -25,7 +25,7 @@ from .globals import CrGlobals, CrGame
 
 @Gtk.Template(resource_path='/org/croissantproject/Croissant/window.ui')
 class CroissantWindow(Gtk.ApplicationWindow):
-    __gtype_name__ = 'CroissantWindow'
+    __gtype_name__ = 'CrWindow'
 
     globals = GObject.Property(type=CrGlobals, default=None, flags=GObject.ParamFlags.READWRITE)
 
