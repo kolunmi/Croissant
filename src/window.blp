@@ -19,139 +19,175 @@ template $CrWindow: ApplicationWindow {
     child: $PastryGlassRoot {
       child: $PastryAnnotationOverlay {
         child: Box {
-          orientation: horizontal;
+          orientation: vertical;
 
-          $PastryGlassFrame {
+          Box {
             margin-start: 15;
             margin-end: 15;
-            margin-top: 15;
-            margin-bottom: 15;
-            halign: center;
 
-            child: Box {
+            orientation: horizontal;
+            height-request: 32;
+
+            Label {
+              styles [
+                "title-1",
+              ]
+              label: "Home";
+            }
+
+            Box {
+              hexpand: true;
+              halign: end;
+
+              orientation: horizontal;
+              spacing: 10;
+
+              Image {
+                icon-name: "cr-croissant";
+                pixel-size: 32;
+              }
+            }
+          }
+
+          Separator {
+            orientation: horizontal;
+          }
+
+          Box {
+            orientation: horizontal;
+
+            $PastryGlassFrame {
+              margin-start: 15;
+              margin-end: 15;
+              margin-top: 15;
+              margin-bottom: 15;
+              halign: center;
+
+              child: Box {
+                margin-start: 10;
+                margin-end: 10;
+                margin-top: 10;
+                margin-bottom: 10;
+
+                orientation: vertical;
+                spacing: 5;
+
+                Button {
+                  styles [
+                    "flat",
+                  ]
+                  child: Image {
+                    icon-name: 'cr-home';
+                    pixel-size: 64;
+                  };
+                }
+
+                Button {
+                  styles [
+                    "flat",
+                  ]
+                  child: Image {
+                    icon-name: 'cr-library';
+                    pixel-size: 64;
+                  };
+                }
+
+                Button {
+                  styles [
+                    "flat",
+                  ]
+                  child: Image {
+                    icon-name: 'cr-media';
+                    pixel-size: 64;
+                  };
+                }
+
+                Button {
+                  styles [
+                    "flat",
+                  ]
+                  child: Image {
+                    icon-name: 'cr-news';
+                    pixel-size: 64;
+                  };
+                }
+
+                Button {
+                  styles [
+                    "flat",
+                  ]
+                  child: Image {
+                    icon-name: 'cr-notes';
+                    pixel-size: 64;
+                  };
+                }
+
+                Button {
+                  styles [
+                    "flat",
+                  ]
+                  child: Image {
+                    icon-name: 'cr-profile';
+                    pixel-size: 64;
+                  };
+                }
+
+                Button {
+                  styles [
+                    "flat",
+                  ]
+                  child: Image {
+                    icon-name: 'cr-settings';
+                    pixel-size: 64;
+                  };
+                }
+              };
+            }
+
+            ScrolledWindow {
+              hexpand: true;
+              halign: center;
+
               margin-start: 10;
               margin-end: 10;
               margin-top: 10;
               margin-bottom: 10;
 
-              orientation: vertical;
-              spacing: 5;
+              hscrollbar-policy: never;
+              vscrollbar-policy: always;
+              propagate-natural-width: true;
+              propagate-natural-height: true;
 
-              Button {
-                styles [
-                  "flat",
-                ]
-                child: Image {
-                  icon-name: 'cr-home';
-                  pixel-size: 64;
+              child: GridView {
+                model: NoSelection {
+                  model: bind template.globals as <$CrGlobals>.games;
                 };
-              }
+                factory: BuilderListItemFactory {
+                  template ListItem {
+                    selectable: false;
+                    activatable: false;
+                    focusable: false;
 
-              Button {
-                styles [
-                  "flat",
-                ]
-                child: Image {
-                  icon-name: 'cr-library';
-                  pixel-size: 64;
-                };
-              }
+                    child: Button btn {
+                      styles [
+                        "game-poster",
+                      ]
+                      overflow: hidden;
+                      halign: center;
+                      valign: center;
 
-              Button {
-                styles [
-                  "flat",
-                ]
-                child: Image {
-                  icon-name: 'cr-media';
-                  pixel-size: 64;
-                };
-              }
+                      has-tooltip: true;
+                      tooltip-text: bind template.item as <$CrGame>.name;
 
-              Button {
-                styles [
-                  "flat",
-                ]
-                child: Image {
-                  icon-name: 'cr-news';
-                  pixel-size: 64;
-                };
-              }
-
-              Button {
-                styles [
-                  "flat",
-                ]
-                child: Image {
-                  icon-name: 'cr-notes';
-                  pixel-size: 64;
-                };
-              }
-
-              Button {
-                styles [
-                  "flat",
-                ]
-                child: Image {
-                  icon-name: 'cr-profile';
-                  pixel-size: 64;
-                };
-              }
-
-              Button {
-                styles [
-                  "flat",
-                ]
-                child: Image {
-                  icon-name: 'cr-settings';
-                  pixel-size: 64;
-                };
-              }
-            };
-          }
-
-          ScrolledWindow {
-            hexpand: true;
-            halign: center;
-
-            margin-start: 10;
-            margin-end: 10;
-            margin-top: 10;
-            margin-bottom: 10;
-
-            hscrollbar-policy: never;
-            vscrollbar-policy: always;
-            propagate-natural-width: true;
-            propagate-natural-height: true;
-
-            child: GridView {
-              model: NoSelection {
-                model: bind template.globals as <$CrGlobals>.games;
-              };
-              factory: BuilderListItemFactory {
-                template ListItem {
-                  selectable: false;
-                  activatable: false;
-                  focusable: false;
-
-                  child: Button btn {
-                    styles [
-                      "game-poster",
-                    ]
-                    overflow: hidden;
-                    halign: center;
-                    valign: center;
-
-                    has-tooltip: true;
-                    tooltip-text: bind template.item as <$CrGame>.name;
-
-                    child: Image {
-                      file: bind template.item as <$CrGame>.coverart;
-                      pixel-size: 128;
+                      child: Image {
+                        file: bind template.item as <$CrGame>.coverart;
+                        pixel-size: 128;
+                      };
                     };
-                  };
-                }
+                  }
+                };
               };
-            };
+            }
           }
         };
       };

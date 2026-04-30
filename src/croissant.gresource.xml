@@ -6,12 +6,19 @@
     <file preprocess="xml-stripblanks">window.ui</file>
     <file preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
 
-    <file>icons/cr-home.png</file>
+    <file>icons/cr-croissant.png</file>
     <file>icons/cr-library.png</file>
-    <file>icons/cr-media.png</file>
     <file>icons/cr-news.png</file>
-    <file>icons/cr-notes.png</file>
     <file>icons/cr-profile.png</file>
+    <file>icons/cr-yuu.png</file>
+    <file>icons/cr-home.png</file>
+    <file>icons/cr-media.png</file>
+    <file>icons/cr-notes.png</file>
     <file>icons/cr-settings.png</file>
+    <file>icons/p1.png</file>
+    <file>icons/p2.png</file>
+    <file>icons/p3.png</file>
+    <file>icons/p4.png</file>
+    <file>icons/p5.png</file>
   </gresource>
 </gresources>
